@@ -1,0 +1,940 @@
+:root {
+    /* LCARS Classic Theme Colours */
+    --lcars-black: #000000;
+    --lcars-space-white: #f5f6fa;
+    --lcars-mars: #ff2200;
+    --lcars-tomato: #ff5555;
+    --lcars-orange: #ff8800;
+    --lcars-golden-orange: #ff9900;
+    --lcars-butterscotch: #ff9966;
+    --lcars-peach: #ff8866;
+    --lcars-gold: #ffaa00;
+    --lcars-sunflower: #ffcc99;
+    --lcars-almond: #ffaa90;
+    --lcars-almond-creme: #ffbbaa;
+    --lcars-lilac: #cc55ff;
+    --lcars-african-violet: #cc99ff;
+    --lcars-violet-creme: #ddbbff;
+    --lcars-moonlit-violet: #9966ff;
+    --lcars-magenta: #cc5599;
+    --lcars-blue: #5566ff;
+    --lcars-bluey: #8899ff;
+    --lcars-sky: #aaaaff;
+    --lcars-ice: #99ccff;
+    --lcars-green: #999933;
+    --lcars-lima-bean: #cccc66;
+    --lcars-gray: #666688;
+    --lcars-red: #cc4444;
+
+    /* Theme variables */
+    --bg-color: var(--lcars-black);
+    --text-color: var(--lcars-space-white);
+    --accent-primary: var(--lcars-orange);
+    --accent-secondary: var(--lcars-lilac);
+    --accent-tertiary: var(--lcars-ice);
+    --border-radius: 20px;
+    --border-color: var(--lcars-mars);
+
+    /* Required Typora variables */
+    --md-char-color: var(--lcars-sunflower);
+    --meta-content-color: var(--lcars-ice);
+    --primary-color: var(--lcars-orange);
+    --primary-btn-border-color: var(--lcars-mars);
+    --primary-btn-text-color: var(--lcars-black);
+    --window-border: 2px solid var(--lcars-orange);
+    --active-file-bg-color: var(--lcars-orange);
+    --active-file-text-color: var(--lcars-black);
+    --active-file-border-color: var(--lcars-mars);
+    --side-bar-bg-color: var(--lcars-black);
+    --item-hover-bg-color: var(--lcars-orange);
+    --item-hover-text-color: var(--lcars-black);
+    --control-text-color: var(--lcars-sunflower);
+    --control-text-hover-color: var(--lcars-orange);
+    --search-select-bg-color: var(--lcars-mars);
+    --rawblock-edit-panel-bd: var(--lcars-orange);
+    --monospace: 'Antonio', 'Helvetica Neue', 'Arial Narrow', sans-serif;
+    --select-text-bg-color: var(--lcars-mars);
+}
+
+html {
+    font-size: 16px;
+}
+
+html,
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Antonio', 'Helvetica Neue', 'Arial Narrow', 'Arial', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#write {
+    max-width: 90ch;
+    padding: 2rem;
+    padding-left: 3rem;
+}
+
+/* LCARS-style decorative frame */
+#write::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 40px;
+    height: 100vh;
+    background: linear-gradient(to bottom,
+        var(--lcars-orange) 0%,
+        var(--lcars-orange) 15%,
+        var(--lcars-lilac) 15%,
+        var(--lcars-lilac) 30%,
+        var(--lcars-ice) 30%,
+        var(--lcars-ice) 50%,
+        var(--lcars-mars) 50%,
+        var(--lcars-mars) 65%,
+        var(--lcars-sunflower) 65%,
+        var(--lcars-sunflower) 80%,
+        var(--lcars-blue) 80%,
+        var(--lcars-blue) 100%
+    );
+    z-index: -1;
+}
+
+/* Headings with LCARS styling */
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+    font-family: 'Antonio', 'Helvetica Neue', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    margin: 2rem 0 1rem 0;
+    padding: 0.8rem 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: var(--border-radius);
+    position: relative;
+}
+
+#write h1 {
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+    font-size: 2rem;
+    border-radius: 40px;
+    padding-left: 2rem;
+}
+
+#write h2 {
+    background: var(--lcars-lilac);
+    color: var(--lcars-black);
+    font-size: 1.6rem;
+    border-radius: 30px;
+}
+
+#write h3 {
+    background: var(--lcars-ice);
+    color: var(--lcars-black);
+    font-size: 1.4rem;
+    border-radius: 25px;
+}
+
+#write h4 {
+    background: var(--lcars-sunflower);
+    color: var(--lcars-black);
+    font-size: 1.2rem;
+    border-radius: 20px;
+}
+
+#write h5 {
+    background: var(--lcars-blue);
+    color: var(--lcars-space-white);
+    font-size: 1.1rem;
+    border-radius: 18px;
+}
+
+#write h6 {
+    background: var(--lcars-mars);
+    color: var(--lcars-black);
+    font-size: 1rem;
+    border-radius: 15px;
+}
+
+/* Paragraph text */
+#write p {
+    margin: 1rem 0;
+    text-transform: none;
+    letter-spacing: 0.02em;
+}
+
+/* Links */
+#write a {
+    color: var(--lcars-ice);
+    text-decoration: none;
+    border-bottom: 2px solid var(--lcars-ice);
+    transition: all 0.2s;
+}
+
+#write a:hover {
+    color: var(--lcars-orange);
+    border-bottom-color: var(--lcars-orange);
+}
+
+/* Bold and emphasis */
+#write strong,
+#write b {
+    color: var(--lcars-orange);
+    font-weight: 700;
+}
+
+#write em,
+#write i {
+    color: var(--lcars-sunflower);
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Lists */
+#write ul,
+#write ol {
+    padding-left: 2.5rem;
+    margin: 1rem 0;
+}
+
+/* Unordered lists - empty pill */
+#write ul li {
+    position: relative;
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+    text-transform: none;
+    list-style: none;
+}
+
+#write ul li::marker {
+    content: '';
+}
+
+#write ul li::before {
+    content: '';
+    position: absolute;
+    left: -1.8rem;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--lcars-orange);
+    border-radius: 10px;
+}
+
+/* Ordered lists - vertical bar + number pill */
+#write ol {
+    counter-reset: list-counter;
+}
+
+#write ol li {
+    position: relative;
+    margin: 0.5rem 0;
+    padding-left: 1rem;
+    text-transform: none;
+    list-style: none;
+    counter-increment: list-counter;
+}
+
+#write ol li::before {
+    content: counter(list-counter);
+    position: absolute;
+    left: -1.8rem;
+    top: 0;
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+    font-weight: 700;
+    font-size: 0.85rem;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.4rem;
+}
+
+/* Code blocks */
+#write pre.md-fences,
+#write code {
+    background: oklch(0.18 0.02 264) !important;
+    border: 2px solid var(--lcars-blue);
+    color: var(--lcars-orange);
+    font-family: 'Courier New', 'Courier', monospace;
+    border-radius: 10px;
+    text-transform: none;
+}
+
+#write pre.md-fences {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    position: relative;
+}
+
+#write pre.md-fences::before {
+    content: 'CODE BLOCK';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--lcars-blue);
+    color: var(--lcars-black);
+    padding: 2px 12px;
+    font-size: 0.7rem;
+    font-family: 'Antonio', sans-serif;
+    font-weight: 700;
+    border-radius: 5px;
+    letter-spacing: 0.1em;
+}
+
+#write code {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.9em;
+}
+
+.CodeMirror {
+    background: oklch(0.18 0.02 264) !important;
+    color: var(--lcars-orange);
+    border-radius: 10px;
+}
+
+.CodeMirror-gutters {
+    background: oklch(0.18 0.02 264) !important;
+    border-right: 2px solid var(--lcars-blue);
+}
+
+.CodeMirror-linenumber {
+    color: var(--lcars-ice);
+}
+
+/* Inline code */
+#write p code,
+#write li code {
+    background: oklch(0.18 0.02 264) !important;
+    border: 1px solid var(--lcars-blue);
+    color: var(--lcars-orange);
+}
+
+/* Blockquotes */
+#write blockquote {
+    border-left: 6px solid var(--lcars-lilac);
+    background: rgba(204, 85, 255, 0.1);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0 15px 15px 0;
+    text-transform: none;
+}
+
+#write blockquote::before {
+    content: '❝';
+    font-size: 2.5rem;
+    color: var(--lcars-lilac);
+    line-height: 0;
+    position: relative;
+    top: 0.5rem;
+}
+
+/* Horizontal rule */
+#write hr {
+    border: none;
+    height: 4px;
+    background: linear-gradient(to right,
+        var(--lcars-orange) 0%,
+        var(--lcars-lilac) 25%,
+        var(--lcars-ice) 50%,
+        var(--lcars-mars) 75%,
+        var(--lcars-sunflower) 100%
+    );
+    margin: 2rem 0;
+    border-radius: 2px;
+}
+
+/* Tables */
+#write table {
+    border-collapse: separate;
+    border-spacing: 4px;
+    width: 100%;
+    margin: 1.5rem 0;
+}
+
+#write th,
+#write td {
+    border: none;
+    padding: 0.8rem 1.2rem;
+    text-align: left;
+}
+
+#write th {
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#write th:first-child {
+    border-radius: 15px 0 0 15px;
+}
+
+#write th:last-child {
+    border-radius: 0 15px 15px 0;
+}
+
+#write tr:nth-child(even) td {
+    background: var(--lcars-gray);
+}
+
+#write tr:nth-child(odd) td {
+    background: rgba(102, 102, 136, 0.5);
+}
+
+#write td:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+#write td:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+/* Selection */
+::selection,
+*::selection {
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+}
+
+::-moz-selection {
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+}
+
+/* Task lists */
+.task-list {
+    padding-left: 0;
+}
+
+#write .md-task-list-item {
+    display: block;
+    position: relative;
+    padding-left: 2.5rem;
+    list-style: none;
+    margin: 0.5rem 0;
+}
+
+/* Remove vertical bar from task list items */
+#write .md-task-list-item::before {
+    display: none !important;
+}
+
+/* Checkbox pill */
+#write .md-task-list-item > input {
+    -webkit-appearance: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--lcars-gray);
+    border: 2px solid var(--lcars-mars);
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#write .md-task-list-item > input:checked {
+    background: var(--lcars-orange);
+    border-color: var(--lcars-orange);
+}
+
+#write .md-task-list-item > input:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--lcars-black);
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+/* Sidebar */
+#typora-sidebar {
+    background: var(--lcars-black);
+    border-right: 3px solid var(--lcars-orange);
+}
+
+.file-list-item {
+    color: var(--lcars-space-white);
+    border-bottom: 1px solid var(--lcars-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+}
+
+.file-list-item.active,
+.file-list-item:hover {
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+    border-radius: 10px 0 0 10px;
+}
+
+.file-node-content {
+    color: var(--lcars-space-white);
+}
+
+.file-library-node.active > .file-node-content,
+.file-list-item.active {
+    color: var(--lcars-black);
+}
+
+.file-library-node.active > .file-node-background {
+    background: var(--lcars-orange);
+}
+
+/* Sidebar tabs */
+.sidebar-tabs {
+    background: var(--lcars-black);
+    border-bottom: 3px solid var(--lcars-lilac);
+}
+
+.ty-side-sort-btn.active,
+.ty-side-sort-btn:hover {
+    color: var(--lcars-orange);
+}
+
+/* Footer */
+footer {
+    color: var(--lcars-sunflower);
+    border-top: 2px solid var(--lcars-orange);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+}
+
+#footer-word-count {
+    color: var(--lcars-sunflower);
+}
+
+/* Tooltips */
+#ty-tooltip {
+    background: var(--lcars-orange);
+    border: 2px solid var(--lcars-mars);
+    color: var(--lcars-black);
+    border-radius: 10px;
+}
+
+/* Modal dialogues */
+.modal-content {
+    background: var(--lcars-black);
+    border: 3px solid var(--lcars-orange);
+    color: var(--lcars-space-white);
+    border-radius: 20px;
+}
+
+.modal-header {
+    border-bottom: 2px solid var(--lcars-orange);
+    background: var(--lcars-gray);
+}
+
+.modal-footer {
+    border-top: 2px solid var(--lcars-orange);
+    background: var(--lcars-gray);
+}
+
+.modal-content input {
+    background: var(--lcars-gray);
+    border: 2px solid var(--lcars-blue);
+    color: var(--lcars-space-white);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+}
+
+/* Buttons */
+.btn,
+.btn-default {
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    transition: all 0.2s;
+}
+
+.btn:hover,
+.btn-default:hover {
+    background: var(--lcars-mars);
+    color: var(--lcars-black);
+}
+
+.btn-primary {
+    background: var(--lcars-blue);
+    color: var(--lcars-space-white);
+}
+
+.btn-primary:hover {
+    background: var(--lcars-ice);
+    color: var(--lcars-black);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--lcars-black);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--lcars-orange);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--lcars-mars);
+}
+
+/* Search */
+.md-search-hit {
+    background: var(--lcars-mars);
+    color: var(--lcars-black);
+}
+
+#md-searchpanel {
+    background: var(--lcars-black);
+    border-bottom: 2px solid var(--lcars-orange);
+}
+
+#md-searchpanel input {
+    background: var(--lcars-gray);
+    border: 2px solid var(--lcars-blue);
+    color: var(--lcars-space-white);
+    border-radius: 10px;
+}
+
+/* Cursor */
+.CodeMirror-cursor {
+    border-left: 2px solid var(--lcars-orange);
+}
+
+/* Focus mode */
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+    color: #333333 !important;
+}
+
+.on-focus-mode .md-focus,
+.on-focus-mode .md-focus-container {
+    color: var(--text-color);
+}
+
+/* Source mode */
+.cm-s-inner .cm-header {
+    color: var(--lcars-orange);
+}
+
+.cm-s-inner .cm-link {
+    color: var(--lcars-ice);
+}
+
+.cm-s-inner .cm-string {
+    color: var(--lcars-sunflower);
+}
+
+.cm-s-inner .cm-comment {
+    color: var(--lcars-gray);
+}
+
+.cm-s-inner .cm-keyword {
+    color: var(--lcars-lilac);
+}
+
+.cm-s-inner .cm-variable {
+    color: var(--lcars-blue);
+}
+
+/* Comprehensive syntax highlighting for code blocks */
+.cm-s-inner .cm-tag,
+.CodeMirror .cm-tag {
+    color: var(--lcars-orange);
+}
+
+.cm-s-inner .cm-attribute,
+.CodeMirror .cm-attribute {
+    color: var(--lcars-ice);
+}
+
+.cm-s-inner .cm-number,
+.CodeMirror .cm-number {
+    color: var(--lcars-sunflower);
+}
+
+.cm-s-inner .cm-operator,
+.CodeMirror .cm-operator {
+    color: var(--lcars-tomato);
+}
+
+.cm-s-inner .cm-punctuation,
+.CodeMirror .cm-punctuation {
+    color: var(--lcars-space-white);
+}
+
+.cm-s-inner .cm-bracket,
+.CodeMirror .cm-bracket {
+    color: var(--lcars-sunflower);
+}
+
+.cm-s-inner .cm-property,
+.CodeMirror .cm-property {
+    color: var(--lcars-ice);
+}
+
+.cm-s-inner .cm-def,
+.CodeMirror .cm-def {
+    color: var(--lcars-orange);
+}
+
+.cm-s-inner .cm-atom,
+.CodeMirror .cm-atom {
+    color: var(--lcars-sunflower);
+}
+
+.cm-s-inner .cm-builtin,
+.CodeMirror .cm-builtin {
+    color: var(--lcars-bluey);
+}
+
+.cm-s-inner .cm-meta,
+.CodeMirror .cm-meta {
+    color: var(--lcars-ice);
+}
+
+.cm-s-inner .cm-qualifier,
+.CodeMirror .cm-qualifier {
+    color: var(--lcars-orange);
+}
+
+.cm-s-inner .cm-type,
+.CodeMirror .cm-type {
+    color: var(--lcars-ice);
+}
+
+/* Ensure default/unstyled text in code blocks has a visible colour */
+.CodeMirror-line {
+    color: var(--lcars-space-white);
+}
+
+/* Additional code block selectors to ensure dark background */
+pre.md-fences,
+pre.md-meta-block,
+.md-fences,
+.CodeMirror-code,
+.CodeMirror-scroll {
+    background: oklch(0.18 0.02 264) !important;
+}
+
+/* Ensure all code block wrappers have dark background */
+.md-fences-adv-panel {
+    background: oklch(0.18 0.02 264) !important;
+}
+
+/* Mermaid diagrams */
+.md-diagram-panel {
+    border: 2px solid var(--lcars-blue);
+    border-radius: 10px;
+    background: var(--lcars-gray);
+}
+
+/* Meta info */
+.md-image > .md-meta {
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+    border: 2px solid var(--lcars-mars);
+    border-radius: 10px;
+}
+
+/* Mark/highlight */
+mark {
+    background: var(--lcars-sunflower);
+    color: var(--lcars-black);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+}
+
+/* Window controls (macOS) */
+.typora-node {
+    background: var(--lcars-black);
+}
+
+/* Preferences */
+.ty-preferences {
+    background: var(--lcars-black);
+    color: var(--lcars-space-white);
+}
+
+.ty-preferences .window-header {
+    background: var(--lcars-gray);
+    border-bottom: 2px solid var(--lcars-orange);
+}
+
+.ty-preferences select {
+    background: var(--lcars-gray);
+    border: 2px solid var(--lcars-blue);
+    color: var(--lcars-space-white);
+    border-radius: 10px;
+}
+
+/* Context menu */
+.context-menu,
+.dropdown-menu {
+    background: var(--lcars-gray);
+    border: 2px solid var(--lcars-orange);
+    border-radius: 10px;
+}
+
+.context-menu .menu-item,
+.dropdown-menu > li > a {
+    color: var(--lcars-space-white);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.context-menu .menu-item:hover,
+.dropdown-menu > li > a:hover {
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+}
+
+/* Megamenu */
+.megamenu-content {
+    background: var(--lcars-black);
+}
+
+.megamenu-menu-panel {
+    background: var(--lcars-black);
+    color: var(--lcars-space-white);
+}
+
+/* Additional LCARS styling */
+.outline-content {
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+.outline-item:hover {
+    background: var(--lcars-orange);
+    color: var(--lcars-black);
+    border-radius: 10px 0 0 10px;
+}
+
+/* LCARS-style frame elements */
+#write::after {
+    content: 'LCARS INTERFACE // TYPORA';
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    color: var(--lcars-orange);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+/* Print styles */
+@media print {
+    #write {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    body {
+        background: white;
+        color: black;
+        text-transform: none;
+    }
+
+    #write::before,
+    #write::after {
+        display: none;
+    }
+
+    #write h1,
+    #write h2,
+    #write h3,
+    #write h4,
+    #write h5,
+    #write h6 {
+        background: transparent;
+        color: black;
+        border-radius: 0;
+        padding: 0.5rem 0;
+        page-break-after: avoid;
+    }
+
+    #write h1::after,
+    #write h2::after {
+        display: none;
+    }
+
+    #write h1 {
+        border-bottom: 2px solid black;
+    }
+
+    #write a {
+        color: black;
+        text-decoration: underline;
+    }
+
+    #write pre.md-fences,
+    #write code {
+        background: #f5f5f5 !important;
+        color: black;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    #write pre.md-fences::before {
+        display: none;
+    }
+
+    #write blockquote {
+        background: transparent;
+        border-left: 3px solid #ccc;
+    }
+
+    #write blockquote::before {
+        display: none;
+    }
+
+    #write hr {
+        background: #ccc;
+    }
+
+    #write table {
+        border: 1px solid black;
+        border-spacing: 0;
+    }
+
+    #write th,
+    #write td {
+        background: transparent;
+        color: black;
+        border: 1px solid black;
+        border-radius: 0;
+    }
+
+    #write th {
+        background: #f0f0f0;
+        font-weight: bold;
+    }
+}
