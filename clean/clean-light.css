@@ -1,0 +1,714 @@
+:root {
+    /* Clean light colour palette - optimised for readability */
+    --bg-primary: #fafafa;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f5f5f5;
+    --bg-code: #f8f8f8;
+
+    /* Text colours with optimal contrast */
+    --text-primary: #2c3e50;
+    --text-secondary: #546e7a;
+    --text-muted: #90a4ae;
+    --text-code: #37474f;
+
+    /* Accent colours - subtle and calming */
+    --accent-blue: #5e9ed6;
+    --accent-teal: #26a69a;
+    --accent-purple: #7e57c2;
+    --accent-orange: #ff8a65;
+    --accent-green: #66bb6a;
+    --accent-red: #ef5350;
+
+    /* Borders and dividers */
+    --border-light: #e0e0e0;
+    --border-medium: #bdbdbd;
+    --border-dark: #9e9e9e;
+
+    /* Shadows */
+    --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.12);
+
+    /* Required Typora variables */
+    --bg-color: var(--bg-primary);
+    --text-color: var(--text-primary);
+    --md-char-color: var(--text-muted);
+    --meta-content-color: var(--accent-teal);
+    --primary-color: var(--accent-blue);
+    --primary-btn-border-color: var(--accent-blue);
+    --primary-btn-text-color: var(--bg-secondary);
+    --window-border: 1px solid var(--border-light);
+    --active-file-bg-color: var(--bg-tertiary);
+    --active-file-text-color: var(--accent-blue);
+    --active-file-border-color: var(--accent-blue);
+    --side-bar-bg-color: var(--bg-secondary);
+    --item-hover-bg-color: var(--bg-tertiary);
+    --item-hover-text-color: var(--accent-blue);
+    --control-text-color: var(--text-secondary);
+    --control-text-hover-color: var(--accent-blue);
+    --search-select-bg-color: #b3e5fc;
+    --rawblock-edit-panel-bd: var(--border-medium);
+    --monospace: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+    --select-text-bg-color: #b3e5fc;
+}
+
+html {
+    font-size: 16px;
+}
+
+html,
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+    font-weight: 400;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#write {
+    max-width: 960px;
+    padding: 3rem 2rem;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write {
+        max-width: 1100px;
+    }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write {
+        max-width: 1200px;
+    }
+}
+
+/* Headings - clean hierarchy */
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 2.5rem 0 1rem 0;
+    padding: 0;
+    color: var(--text-primary);
+}
+
+#write h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border-light);
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+#write h2 {
+    font-size: 1.8rem;
+    color: var(--accent-blue);
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 0.3rem;
+}
+
+#write h3 {
+    font-size: 1.5rem;
+    color: var(--accent-teal);
+}
+
+#write h4 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+}
+
+#write h5 {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+}
+
+#write h6 {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Paragraph text */
+#write p {
+    margin: 1.2rem 0;
+    line-height: 1.8;
+}
+
+/* Links - subtle but clear */
+#write a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+#write a:hover {
+    color: var(--accent-teal);
+    border-bottom-color: var(--accent-teal);
+}
+
+/* Bold and emphasis */
+#write strong,
+#write b {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+#write em,
+#write i {
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Lists - clean spacing */
+#write ul,
+#write ol {
+    padding-left: 2rem;
+    margin: 1.2rem 0;
+}
+
+#write ul li,
+#write ol li {
+    margin: 0.5rem 0;
+    line-height: 1.8;
+}
+
+#write ul li::marker {
+    color: var(--accent-blue);
+}
+
+#write ol li::marker {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+/* Nested lists */
+#write ul ul,
+#write ol ol,
+#write ul ol,
+#write ol ul {
+    margin: 0.3rem 0;
+}
+
+/* Code blocks - soft background */
+#write pre.md-fences,
+#write code {
+    background: var(--bg-code);
+    border: 1px solid var(--border-light);
+    color: var(--text-code);
+    font-family: var(--monospace);
+    font-size: 0.9em;
+    border-radius: 4px;
+}
+
+#write pre.md-fences {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    line-height: 1.6;
+    overflow-x: auto;
+    box-shadow: var(--shadow-subtle);
+}
+
+#write code {
+    padding: 0.2em 0.5em;
+    font-size: 0.88em;
+}
+
+.CodeMirror {
+    background: var(--bg-code);
+    color: var(--text-code);
+    font-family: var(--monospace);
+    line-height: 1.6;
+}
+
+.CodeMirror-gutters {
+    background: var(--bg-tertiary);
+    border-right: 1px solid var(--border-light);
+}
+
+.CodeMirror-linenumber {
+    color: var(--text-muted);
+}
+
+.CodeMirror-activeline-background {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* Inline code */
+#write p code,
+#write li code {
+    background: var(--bg-code);
+    border: 1px solid var(--border-light);
+    color: var(--text-code);
+}
+
+/* Blockquotes - clean and minimal */
+#write blockquote {
+    border-left: 4px solid var(--accent-blue);
+    background: var(--bg-tertiary);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    color: var(--text-secondary);
+    border-radius: 0 4px 4px 0;
+}
+
+#write blockquote p {
+    margin: 0.5rem 0;
+}
+
+#write blockquote p:first-child {
+    margin-top: 0;
+}
+
+#write blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+/* Horizontal rule */
+#write hr {
+    border: none;
+    height: 1px;
+    background: var(--border-light);
+    margin: 3rem 0;
+}
+
+/* Tables - clean grid */
+#write table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2rem 0;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-subtle);
+}
+
+#write th,
+#write td {
+    border: 1px solid var(--border-light);
+    padding: 0.75rem 1rem;
+    text-align: left;
+}
+
+#write th {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+#write tr:nth-child(even) {
+    background: var(--bg-tertiary);
+}
+
+#write tr:hover {
+    background: rgba(94, 158, 214, 0.05);
+}
+
+/* Selection */
+::selection,
+*::selection {
+    background: var(--search-select-bg-color);
+    color: var(--text-primary);
+}
+
+::-moz-selection {
+    background: var(--search-select-bg-color);
+    color: var(--text-primary);
+}
+
+/* Task lists */
+.task-list {
+    padding-left: 0;
+    list-style: none;
+}
+
+.md-task-list-item {
+    padding-left: 1.5rem;
+}
+
+.md-task-list-item > input {
+    -webkit-appearance: none;
+    top: auto;
+    margin-right: 0.5rem;
+    margin-left: -1.5rem;
+}
+
+.md-task-list-item > input:before {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid var(--border-medium);
+    background: var(--bg-secondary);
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+.md-task-list-item > input:checked:before {
+    content: '✓';
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: var(--bg-secondary);
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Sidebar */
+#typora-sidebar {
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-light);
+}
+
+.file-list-item {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-light);
+    padding: 0.5rem 1rem;
+    transition: all 0.2s;
+}
+
+.file-list-item.active,
+.file-list-item:hover {
+    background: var(--bg-tertiary);
+    color: var(--accent-blue);
+    border-left: 3px solid var(--accent-blue);
+}
+
+.file-node-content {
+    color: var(--text-primary);
+}
+
+.file-library-node.active > .file-node-content,
+.file-list-item.active {
+    color: var(--accent-blue);
+}
+
+.file-library-node.active > .file-node-background {
+    background: var(--bg-tertiary);
+}
+
+/* Sidebar tabs */
+.sidebar-tabs {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.ty-side-sort-btn.active,
+.ty-side-sort-btn:hover {
+    color: var(--accent-blue);
+}
+
+/* Footer */
+footer {
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-light);
+    background: var(--bg-secondary);
+}
+
+#footer-word-count {
+    color: var(--text-muted);
+}
+
+/* Tooltips */
+#ty-tooltip {
+    background: var(--text-primary);
+    border: 1px solid var(--border-medium);
+    color: var(--bg-secondary);
+    border-radius: 4px;
+    box-shadow: var(--shadow-medium);
+}
+
+/* Modal dialogues */
+.modal-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    color: var(--text-primary);
+    border-radius: 8px;
+    box-shadow: var(--shadow-medium);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-light);
+    background: var(--bg-tertiary);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-light);
+    background: var(--bg-tertiary);
+}
+
+.modal-content input {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.modal-content input:focus {
+    border-color: var(--accent-blue);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(94, 158, 214, 0.1);
+}
+
+/* Buttons */
+.btn,
+.btn-default {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-medium);
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn:hover,
+.btn-default:hover {
+    background: var(--bg-tertiary);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.btn-primary {
+    background: var(--accent-blue);
+    color: var(--bg-secondary);
+    border: 1px solid var(--accent-blue);
+}
+
+.btn-primary:hover {
+    background: var(--accent-teal);
+    border-color: var(--accent-teal);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-medium);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-dark);
+}
+
+/* Search */
+.md-search-hit {
+    background: #fff59d;
+    color: var(--text-primary);
+    border-radius: 2px;
+}
+
+#md-searchpanel {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+#md-searchpanel input {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+    border-radius: 4px;
+}
+
+#md-searchpanel input:focus {
+    border-color: var(--accent-blue);
+    outline: none;
+}
+
+/* Cursor */
+.CodeMirror-cursor {
+    border-left: 2px solid var(--accent-blue);
+}
+
+/* Focus mode */
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+    color: var(--text-muted) !important;
+    opacity: 0.5;
+}
+
+.on-focus-mode .md-focus,
+.on-focus-mode .md-focus-container {
+    color: var(--text-primary);
+}
+
+/* Source mode syntax */
+.cm-s-inner .cm-header,
+.cm-header {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+.cm-s-inner .cm-link,
+.cm-link {
+    color: var(--accent-teal);
+}
+
+.cm-s-inner .cm-string,
+.cm-string {
+    color: var(--accent-green);
+}
+
+.cm-s-inner .cm-comment,
+.cm-comment {
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.cm-s-inner .cm-keyword,
+.cm-keyword {
+    color: var(--accent-purple);
+    font-weight: 600;
+}
+
+.cm-s-inner .cm-variable,
+.cm-variable {
+    color: var(--text-primary);
+}
+
+.cm-s-inner .cm-tag,
+.cm-tag {
+    color: var(--accent-blue);
+}
+
+.cm-s-inner .cm-attribute,
+.cm-attribute {
+    color: var(--accent-teal);
+}
+
+.cm-s-inner .cm-number,
+.cm-number {
+    color: var(--accent-orange);
+}
+
+.cm-s-inner .cm-operator,
+.cm-operator {
+    color: var(--text-secondary);
+}
+
+.cm-s-inner .cm-def,
+.cm-def {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.cm-s-inner .cm-property,
+.cm-property {
+    color: var(--accent-teal);
+}
+
+.cm-s-inner .cm-builtin,
+.cm-builtin {
+    color: var(--accent-purple);
+}
+
+/* Mermaid diagrams */
+.md-diagram-panel {
+    border: 1px solid var(--border-light);
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+/* Meta info */
+.md-image > .md-meta {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-light);
+}
+
+/* Mark/highlight */
+mark {
+    background: #fff59d;
+    color: var(--text-primary);
+    padding: 0.1rem 0.3rem;
+    border-radius: 2px;
+}
+
+/* Window controls */
+.typora-node {
+    background: var(--bg-primary);
+}
+
+/* Preferences */
+.ty-preferences {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.ty-preferences .window-header {
+    background: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.ty-preferences select {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-medium);
+    color: var(--text-primary);
+    border-radius: 4px;
+}
+
+/* Context menu */
+.context-menu,
+.dropdown-menu {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    box-shadow: var(--shadow-medium);
+}
+
+.context-menu .menu-item,
+.dropdown-menu > li > a {
+    color: var(--text-primary);
+}
+
+.context-menu .menu-item:hover,
+.dropdown-menu > li > a:hover {
+    background: var(--bg-tertiary);
+    color: var(--accent-blue);
+}
+
+/* Megamenu */
+.megamenu-content {
+    background: var(--bg-secondary);
+}
+
+.megamenu-menu-panel {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* Outline panel */
+.outline-content {
+    line-height: 1.6;
+}
+
+.outline-item:hover {
+    background: var(--bg-tertiary);
+    color: var(--accent-blue);
+}
+
+/* Print styles */
+@media print {
+    #write {
+        max-width: 100%;
+    }
+
+    body {
+        background: white;
+    }
+}

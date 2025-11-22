@@ -1,0 +1,714 @@
+:root {
+    --bg-color: oklch(0.15 0 0);
+    --text-color: oklch(0.90 0 0);
+
+    /* ANSI colours (standard 16-colour palette) */
+    --ansi-black: oklch(0.50 0 0);
+    --ansi-red: oklch(0.65 0.22 25);
+    --ansi-green: oklch(0.72 0.20 145);
+    --ansi-yellow: oklch(0.80 0.18 95);
+    --ansi-blue: oklch(0.70 0.20 260);
+    --ansi-magenta: oklch(0.72 0.24 320);
+    --ansi-cyan: oklch(0.78 0.15 195);
+    --ansi-white: oklch(0.90 0 0);
+
+    /* Bright ANSI colours */
+    --ansi-bright-black: oklch(0.65 0 0);
+    --ansi-bright-red: oklch(0.75 0.25 25);
+    --ansi-bright-green: oklch(0.82 0.22 145);
+    --ansi-bright-yellow: oklch(0.88 0.20 95);
+    --ansi-bright-blue: oklch(0.78 0.22 260);
+    --ansi-bright-magenta: oklch(0.80 0.26 320);
+    --ansi-bright-cyan: oklch(0.85 0.16 195);
+    --ansi-bright-white: oklch(0.98 0 0);
+
+    --border-color: oklch(0.45 0 0);
+    --selection-bg: oklch(0.45 0.12 260);
+
+    /* Required Typora variables mapped to ANSI colours */
+    --md-char-color: var(--ansi-bright-black);
+    --meta-content-color: var(--ansi-cyan);
+    --primary-color: var(--ansi-bright-blue);
+    --primary-btn-border-color: var(--ansi-blue);
+    --primary-btn-text-color: var(--ansi-bright-white);
+    --window-border: 1px solid var(--border-color);
+    --active-file-bg-color: oklch(0.22 0 0);
+    --active-file-text-color: var(--ansi-bright-cyan);
+    --active-file-border-color: var(--ansi-bright-blue);
+    --side-bar-bg-color: var(--bg-color);
+    --item-hover-bg-color: oklch(0.22 0 0);
+    --item-hover-text-color: var(--ansi-bright-white);
+    --control-text-color: var(--ansi-white);
+    --control-text-hover-color: var(--ansi-bright-white);
+    --search-select-bg-color: var(--selection-bg);
+    --rawblock-edit-panel-bd: var(--border-color);
+    --monospace: 'Courier New', 'Courier', 'Monaco', 'Menlo', 'Consolas', monospace;
+    --select-text-bg-color: var(--selection-bg);
+}
+
+html {
+    font-size: 16px;
+}
+
+html,
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--monospace);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 100ch;
+    padding: 2rem;
+}
+
+/* Headings with ANSI colours */
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+    font-family: var(--monospace);
+    font-weight: bold;
+    margin: 1.5rem 0 1rem 0;
+    padding: 0;
+}
+
+#write h1 {
+    color: var(--ansi-bright-red);
+    font-size: 1.8rem;
+    border-bottom: 1px solid var(--ansi-red);
+    padding-bottom: 0.5rem;
+}
+
+#write h1:before {
+    content: '# ';
+    color: var(--ansi-red);
+}
+
+#write h2 {
+    color: var(--ansi-bright-yellow);
+    font-size: 1.5rem;
+}
+
+#write h2:before {
+    content: '## ';
+    color: var(--ansi-yellow);
+}
+
+#write h3 {
+    color: var(--ansi-bright-blue);
+    font-size: 1.3rem;
+}
+
+#write h3:before {
+    content: '### ';
+    color: var(--ansi-blue);
+}
+
+#write h4 {
+    color: var(--ansi-bright-magenta);
+    font-size: 1.1rem;
+}
+
+#write h4:before {
+    content: '#### ';
+    color: var(--ansi-magenta);
+}
+
+#write h5 {
+    color: var(--ansi-bright-cyan);
+    font-size: 1.1rem;
+}
+
+#write h5:before {
+    content: '##### ';
+    color: var(--ansi-cyan);
+}
+
+#write h6 {
+    color: var(--ansi-bright-green);
+    font-size: 1.1rem;
+}
+
+#write h6:before {
+    content: '###### ';
+    color: var(--ansi-green);
+}
+
+/* Paragraph text */
+#write p {
+    margin: 0.8rem 0;
+}
+
+/* Links */
+#write a {
+    color: var(--ansi-bright-cyan);
+    text-decoration: underline;
+}
+
+#write a:hover {
+    color: var(--ansi-cyan);
+    text-decoration: none;
+}
+
+/* Bold and emphasis */
+#write strong,
+#write b {
+    color: var(--ansi-bright-white);
+    font-weight: bold;
+}
+
+#write em,
+#write i {
+    color: var(--ansi-yellow);
+    font-style: italic;
+}
+
+/* Lists */
+#write ul,
+#write ol {
+    padding-left: 2rem;
+}
+
+#write ul li:before {
+    content: '> ';
+    color: var(--ansi-green);
+}
+
+#write ol {
+    counter-reset: list-counter;
+}
+
+#write ol li {
+    counter-increment: list-counter;
+}
+
+#write li {
+    margin: 0.4rem 0;
+}
+
+/* Code blocks */
+#write pre.md-fences,
+#write code {
+    background: oklch(0.20 0 0) !important;
+    border: 1px solid var(--border-color);
+    color: var(--ansi-bright-green);
+    font-family: var(--monospace);
+}
+
+#write pre.md-fences {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-left: 3px solid var(--ansi-green);
+}
+
+#write code {
+    padding: 0.2rem 0.4rem;
+}
+
+.CodeMirror {
+    background: oklch(0.20 0 0) !important;
+    color: var(--ansi-bright-green);
+}
+
+.CodeMirror-gutters {
+    background: oklch(0.20 0 0) !important;
+    border-right: 1px solid var(--border-color);
+}
+
+.CodeMirror-linenumber {
+    color: var(--ansi-bright-black);
+}
+
+/* Inline code */
+#write p code,
+#write li code {
+    background: oklch(0.20 0 0) !important;
+    border: 1px solid var(--border-color);
+    color: var(--ansi-bright-green);
+}
+
+/* Blockquotes */
+#write blockquote {
+    border-left: 3px solid var(--ansi-blue);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: var(--ansi-bright-blue);
+    opacity: 0.9;
+}
+
+#write blockquote:before {
+    content: '│ ';
+    color: var(--ansi-blue);
+}
+
+/* Horizontal rule */
+#write hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+}
+
+/* Tables */
+#write table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0;
+}
+
+#write th,
+#write td {
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    text-align: left;
+}
+
+#write th {
+    background: oklch(0.25 0 0);
+    color: var(--ansi-bright-yellow);
+    font-weight: bold;
+}
+
+#write tr:nth-child(even) {
+    background: oklch(0.25 0 0);
+}
+
+#write tr:nth-child(odd) {
+    background: var(--bg-color);
+}
+
+/* Selection */
+::selection,
+*::selection {
+    background: var(--selection-bg);
+    color: var(--ansi-bright-white);
+}
+
+::-moz-selection {
+    background: var(--selection-bg);
+    color: var(--ansi-bright-white);
+}
+
+/* Task lists */
+.task-list {
+    padding-left: 0;
+}
+
+.md-task-list-item > input {
+    -webkit-appearance: none;
+    top: auto;
+}
+
+.md-task-list-item > input:before {
+    content: '[ ]';
+    color: var(--ansi-red);
+    border: none;
+    background: transparent;
+}
+
+.md-task-list-item > input:checked:before {
+    content: '[X]';
+    color: var(--ansi-bright-green);
+}
+
+/* Sidebar */
+#typora-sidebar {
+    background: var(--bg-color);
+    border-right: 1px solid var(--border-color);
+}
+
+.file-list-item {
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.file-list-item.active,
+.file-list-item:hover {
+    background: oklch(0.22 0 0);
+    color: var(--ansi-bright-cyan);
+}
+
+.file-node-content {
+    color: var(--text-color);
+}
+
+.file-library-node.active > .file-node-content,
+.file-list-item.active {
+    color: var(--ansi-bright-cyan);
+}
+
+.file-library-node.active > .file-node-background {
+    background: oklch(0.22 0 0);
+}
+
+/* Sidebar tabs */
+.sidebar-tabs {
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ty-side-sort-btn.active,
+.ty-side-sort-btn:hover {
+    color: var(--ansi-bright-cyan);
+}
+
+/* Footer */
+footer {
+    color: var(--text-color);
+    border-top: 1px solid var(--border-color);
+}
+
+#footer-word-count {
+    color: var(--text-color);
+}
+
+/* Tooltips */
+#ty-tooltip {
+    background: oklch(0.22 0 0);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Modal dialogues */
+.modal-content {
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+
+.modal-content input {
+    background: oklch(0.25 0 0);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Buttons */
+.btn,
+.btn-default {
+    background: oklch(0.25 0 0);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn:hover,
+.btn-default:hover {
+    background: oklch(0.22 0 0);
+    color: var(--ansi-bright-cyan);
+}
+
+.btn-primary {
+    background: oklch(0.22 0 0);
+    color: var(--ansi-bright-blue);
+    border: 1px solid var(--ansi-bright-blue);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ansi-bright-black);
+}
+
+/* Search */
+.md-search-hit {
+    background: var(--selection-bg);
+    color: var(--ansi-bright-yellow);
+}
+
+#md-searchpanel {
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+#md-searchpanel input {
+    background: oklch(0.25 0 0);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Cursor */
+.CodeMirror-cursor {
+    border-left: 2px solid var(--ansi-bright-green);
+}
+
+/* Focus mode */
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+    color: oklch(0.40 0 0) !important;
+}
+
+.on-focus-mode .md-focus,
+.on-focus-mode .md-focus-container {
+    color: var(--text-color);
+}
+
+/* Source mode */
+.cm-s-inner .cm-header {
+    color: var(--ansi-bright-red);
+}
+
+.cm-s-inner .cm-link {
+    color: var(--ansi-bright-cyan);
+}
+
+.cm-s-inner .cm-string {
+    color: var(--ansi-bright-green);
+}
+
+.cm-s-inner .cm-comment {
+    color: var(--ansi-bright-black);
+}
+
+.cm-s-inner .cm-keyword {
+    color: var(--ansi-bright-magenta);
+}
+
+.cm-s-inner .cm-variable {
+    color: var(--ansi-bright-blue);
+}
+
+/* Comprehensive syntax highlighting for code blocks */
+.cm-s-inner .cm-tag,
+.CodeMirror .cm-tag {
+    color: var(--ansi-bright-green);
+}
+
+.cm-s-inner .cm-attribute,
+.CodeMirror .cm-attribute {
+    color: var(--ansi-bright-cyan);
+}
+
+.cm-s-inner .cm-number,
+.CodeMirror .cm-number {
+    color: var(--ansi-bright-yellow);
+}
+
+.cm-s-inner .cm-operator,
+.CodeMirror .cm-operator {
+    color: var(--ansi-bright-red);
+}
+
+.cm-s-inner .cm-punctuation,
+.CodeMirror .cm-punctuation {
+    color: var(--ansi-white);
+}
+
+.cm-s-inner .cm-bracket,
+.CodeMirror .cm-bracket {
+    color: var(--ansi-bright-yellow);
+}
+
+.cm-s-inner .cm-property,
+.CodeMirror .cm-property {
+    color: var(--ansi-bright-cyan);
+}
+
+.cm-s-inner .cm-def,
+.CodeMirror .cm-def {
+    color: var(--ansi-bright-yellow);
+}
+
+.cm-s-inner .cm-atom,
+.CodeMirror .cm-atom {
+    color: var(--ansi-bright-magenta);
+}
+
+.cm-s-inner .cm-builtin,
+.CodeMirror .cm-builtin {
+    color: var(--ansi-bright-blue);
+}
+
+.cm-s-inner .cm-meta,
+.CodeMirror .cm-meta {
+    color: var(--ansi-cyan);
+}
+
+.cm-s-inner .cm-qualifier,
+.CodeMirror .cm-qualifier {
+    color: var(--ansi-bright-green);
+}
+
+.cm-s-inner .cm-type,
+.CodeMirror .cm-type {
+    color: var(--ansi-bright-cyan);
+}
+
+/* Ensure default/unstyled text in code blocks has a visible colour */
+.CodeMirror-line {
+    color: var(--ansi-white);
+}
+
+/* Additional code block selectors to ensure dark background */
+pre.md-fences,
+pre.md-meta-block,
+.md-fences,
+.CodeMirror-code,
+.CodeMirror-scroll {
+    background: oklch(0.20 0 0) !important;
+}
+
+/* Ensure all code block wrappers have dark background */
+.md-fences-adv-panel {
+    background: oklch(0.20 0 0) !important;
+}
+
+/* Mermaid diagrams */
+.md-diagram-panel {
+    border: 1px solid var(--border-color);
+}
+
+/* Meta info */
+.md-image > .md-meta {
+    background: oklch(0.25 0 0);
+    color: var(--ansi-cyan);
+    border: 1px solid var(--border-color);
+}
+
+/* Mark/highlight */
+mark {
+    background: var(--ansi-yellow);
+    color: var(--ansi-black);
+}
+
+/* Window controls (macOS) */
+.typora-node {
+    background: var(--bg-color);
+}
+
+/* Preferences */
+.ty-preferences {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.ty-preferences .window-header {
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.ty-preferences select {
+    background: oklch(0.25 0 0);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+/* Context menu */
+.context-menu,
+.dropdown-menu {
+    background: oklch(0.25 0 0);
+    border: 1px solid var(--border-color);
+}
+
+.context-menu .menu-item,
+.dropdown-menu > li > a {
+    color: var(--text-color);
+}
+
+.context-menu .menu-item:hover,
+.dropdown-menu > li > a:hover {
+    background: oklch(0.22 0 0);
+    color: var(--ansi-bright-cyan);
+}
+
+/* Megamenu */
+.megamenu-content {
+    background: var(--bg-color);
+}
+
+.megamenu-menu-panel {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Print styles */
+@media print {
+    #write {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    #write h1,
+    #write h2,
+    #write h3,
+    #write h4,
+    #write h5,
+    #write h6 {
+        color: black;
+        border-bottom: none;
+        page-break-after: avoid;
+    }
+
+    #write h1::before,
+    #write h2::before,
+    #write h3::before,
+    #write h4::before,
+    #write h5::before,
+    #write h6::before {
+        display: none;
+    }
+
+    #write h1 {
+        border-bottom: 2px solid black;
+    }
+
+    #write a {
+        color: black;
+        text-decoration: underline;
+    }
+
+    #write pre.md-fences,
+    #write code {
+        background: #f5f5f5 !important;
+        color: black;
+        border: 1px solid #ccc;
+    }
+
+    #write blockquote {
+        border-left: 3px solid #ccc;
+    }
+
+    #write blockquote::before {
+        display: none;
+    }
+
+    #write table {
+        border: 1px solid black;
+    }
+
+    #write th,
+    #write td {
+        background: transparent;
+        color: black;
+        border: 1px solid black;
+    }
+
+    #write th {
+        background: #f0f0f0;
+    }
+}

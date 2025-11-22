@@ -1,0 +1,922 @@
+:root {
+    /* Cyberpunk neon colour palette */
+    --cyber-black: #0a0a0f;
+    --cyber-dark: #161620;
+    --cyber-darker: #0d0d15;
+    --cyber-grid: #1a1a2e;
+
+    /* Neon colours */
+    --neon-pink: #ff006e;
+    --neon-cyan: #00f5ff;
+    --neon-purple: #b300ff;
+    --neon-yellow: #ffed00;
+    --neon-orange: #ff4500;
+    --neon-green: #39ff14;
+    --neon-blue: #0ff;
+
+    /* Glow colours */
+    --glow-pink: rgba(255, 0, 110, 0.5);
+    --glow-cyan: rgba(0, 245, 255, 0.5);
+    --glow-purple: rgba(179, 0, 255, 0.5);
+    --glow-green: rgba(57, 255, 20, 0.5);
+
+    /* Text colours */
+    --text-primary: #e0e0ff;
+    --text-secondary: #a0a0c0;
+    --text-muted: #606080;
+
+    /* Required Typora variables */
+    --bg-color: var(--cyber-black);
+    --text-color: var(--text-primary);
+    --md-char-color: var(--neon-cyan);
+    --meta-content-color: var(--neon-purple);
+    --primary-color: var(--neon-cyan);
+    --primary-btn-border-color: var(--neon-cyan);
+    --primary-btn-text-color: var(--cyber-black);
+    --window-border: 1px solid var(--neon-cyan);
+    --active-file-bg-color: var(--cyber-grid);
+    --active-file-text-color: var(--neon-cyan);
+    --active-file-border-color: var(--neon-cyan);
+    --side-bar-bg-color: var(--cyber-darker);
+    --item-hover-bg-color: var(--cyber-grid);
+    --item-hover-text-color: var(--neon-cyan);
+    --control-text-color: var(--text-secondary);
+    --control-text-hover-color: var(--neon-cyan);
+    --search-select-bg-color: var(--glow-cyan);
+    --rawblock-edit-panel-bd: var(--neon-cyan);
+    --monospace: 'Fira Code', 'JetBrains Mono', 'Courier New', monospace;
+    --select-text-bg-color: var(--glow-cyan);
+}
+
+html {
+    font-size: 16px;
+}
+
+html,
+body {
+    background: var(--cyber-black);
+    color: var(--text-primary);
+    font-family: 'Rajdhani', 'Roboto', 'Arial', sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+/* Cyberpunk grid background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#write {
+    max-width: 90ch;
+    padding: 3rem;
+    position: relative;
+}
+
+/* Glitch effect border */
+#write::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 3px;
+    height: 100vh;
+    background: linear-gradient(
+        to bottom,
+        var(--neon-pink) 0%,
+        var(--neon-cyan) 25%,
+        var(--neon-purple) 50%,
+        var(--neon-green) 75%,
+        var(--neon-pink) 100%
+    );
+    box-shadow: 0 0 10px var(--glow-cyan);
+    animation: pulse 3s ease-in-out infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Headings with neon glow */
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+    font-family: 'Orbitron', 'Rajdhani', 'Arial Black', sans-serif;
+    font-weight: 700;
+    margin: 2.5rem 0 1.5rem 0;
+    padding: 0;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: relative;
+}
+
+#write h1 {
+    color: var(--neon-cyan);
+    font-size: 2.5rem;
+    text-shadow:
+        0 0 10px var(--glow-cyan),
+        0 0 20px var(--glow-cyan),
+        0 0 30px var(--glow-cyan);
+    border-bottom: 2px solid var(--neon-cyan);
+    padding-bottom: 0.5rem;
+    animation: flicker-h1 5s linear infinite;
+}
+
+@keyframes flicker-h1 {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        text-shadow:
+            0 0 10px var(--glow-cyan),
+            0 0 20px var(--glow-cyan),
+            0 0 30px var(--glow-cyan);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+#write h1::before {
+    content: '▸ ';
+    color: var(--neon-pink);
+}
+
+#write h2 {
+    color: var(--neon-pink);
+    font-size: 2rem;
+    text-shadow:
+        0 0 10px var(--glow-pink),
+        0 0 20px var(--glow-pink);
+}
+
+#write h2::before {
+    content: '// ';
+    color: var(--neon-purple);
+}
+
+#write h3 {
+    color: var(--neon-purple);
+    font-size: 1.7rem;
+    text-shadow:
+        0 0 10px var(--glow-purple),
+        0 0 15px var(--glow-purple);
+}
+
+#write h3::before {
+    content: '> ';
+    color: var(--neon-cyan);
+}
+
+#write h4 {
+    color: var(--neon-green);
+    font-size: 1.4rem;
+    text-shadow: 0 0 10px var(--glow-green);
+}
+
+#write h4::before {
+    content: ':: ';
+    color: var(--neon-yellow);
+}
+
+#write h5 {
+    color: var(--neon-yellow);
+    font-size: 1.2rem;
+}
+
+#write h6 {
+    color: var(--neon-orange);
+    font-size: 1.1rem;
+}
+
+/* Paragraph text */
+#write p {
+    margin: 1rem 0;
+    line-height: 1.8;
+}
+
+/* Links with neon hover effect */
+#write a {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    border-bottom: 1px solid var(--neon-cyan);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+#write a:hover {
+    color: var(--neon-pink);
+    border-bottom-color: var(--neon-pink);
+    text-shadow: 0 0 10px var(--glow-pink);
+}
+
+/* Bold and emphasis */
+#write strong,
+#write b {
+    color: var(--neon-pink);
+    font-weight: 700;
+    text-shadow: 0 0 5px var(--glow-pink);
+}
+
+#write em,
+#write i {
+    color: var(--neon-purple);
+    font-style: italic;
+}
+
+/* Lists with cyber bullets */
+#write ul,
+#write ol {
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+#write ul li {
+    position: relative;
+    margin: 0.5rem 0;
+}
+
+#write ul li::marker {
+    content: '';
+}
+
+#write ul li::before {
+    content: '▸';
+    position: absolute;
+    left: -1.5rem;
+    color: var(--neon-cyan);
+    font-size: 1.2em;
+    text-shadow: 0 0 5px var(--glow-cyan);
+}
+
+#write ol li {
+    margin: 0.5rem 0;
+}
+
+#write ol li::marker {
+    color: var(--neon-pink);
+    font-weight: 700;
+}
+
+/* Code blocks with matrix effect */
+#write pre.md-fences,
+#write code {
+    background: oklch(0.15 0 0) !important;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+    font-family: var(--monospace);
+    font-size: 0.95em;
+    box-shadow:
+        inset 0 0 20px rgba(57, 255, 20, 0.1),
+        0 0 10px rgba(57, 255, 20, 0.2);
+}
+
+#write pre.md-fences {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#write pre.md-fences::before {
+    content: '[ CODE ]';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--neon-green);
+    color: var(--cyber-black);
+    padding: 3px 10px;
+    font-size: 0.65rem;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+}
+
+#write pre.md-fences::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 100%;
+    background: linear-gradient(to left, var(--cyber-grid), transparent);
+    pointer-events: none;
+}
+
+#write code {
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+}
+
+.CodeMirror {
+    background: oklch(0.15 0 0) !important;
+    color: var(--neon-green);
+    border: 1px solid var(--neon-green);
+}
+
+.CodeMirror-gutters {
+    background: oklch(0.15 0 0) !important;
+    border-right: 1px solid var(--neon-green);
+}
+
+.CodeMirror-linenumber {
+    color: var(--neon-cyan);
+    opacity: 0.8;
+}
+
+.CodeMirror-activeline-background {
+    background: rgba(57, 255, 20, 0.05);
+}
+
+/* Inline code */
+#write p code,
+#write li code {
+    background: oklch(0.15 0 0) !important;
+    border: 1px solid var(--neon-green);
+    color: var(--neon-green);
+}
+
+/* Blockquotes with neon border */
+#write blockquote {
+    border-left: 4px solid var(--neon-purple);
+    background: rgba(179, 0, 255, 0.05);
+    padding: 1rem 1.5rem;
+    margin: 1.5rem 0;
+    color: var(--text-secondary);
+    position: relative;
+    box-shadow: -5px 0 10px rgba(179, 0, 255, 0.2);
+}
+
+#write blockquote::before {
+    content: '❝';
+    font-size: 3rem;
+    color: var(--neon-purple);
+    position: absolute;
+    left: -15px;
+    top: -10px;
+    opacity: 0.3;
+}
+
+/* Horizontal rule with cyber effect */
+#write hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        var(--neon-cyan) 20%,
+        var(--neon-pink) 40%,
+        var(--neon-purple) 60%,
+        var(--neon-cyan) 80%,
+        transparent
+    );
+    margin: 3rem 0;
+    box-shadow: 0 0 10px var(--glow-cyan);
+}
+
+/* Tables with neon styling */
+#write table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 2rem 0;
+    border: 1px solid var(--neon-cyan);
+}
+
+#write th,
+#write td {
+    border: 1px solid var(--neon-cyan);
+    padding: 0.8rem 1rem;
+    text-align: left;
+}
+
+#write th {
+    background: var(--cyber-grid);
+    color: var(--neon-cyan);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-shadow: 0 0 5px var(--glow-cyan);
+}
+
+#write tr:hover {
+    background: rgba(0, 245, 255, 0.05);
+}
+
+#write tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Selection with neon glow */
+::selection,
+*::selection {
+    background: var(--glow-cyan);
+    color: var(--cyber-black);
+    text-shadow: none;
+}
+
+::-moz-selection {
+    background: var(--glow-cyan);
+    color: var(--cyber-black);
+}
+
+/* Task lists */
+.task-list {
+    padding-left: 0;
+}
+
+.md-task-list-item > input {
+    -webkit-appearance: none;
+    top: auto;
+    margin-right: 0.5rem;
+}
+
+.md-task-list-item > input:before {
+    content: '☐';
+    color: var(--neon-pink);
+    font-size: 1.2em;
+    border: none;
+    background: transparent;
+    text-shadow: 0 0 5px var(--glow-pink);
+}
+
+.md-task-list-item > input:checked:before {
+    content: '☑';
+    color: var(--neon-green);
+    text-shadow: 0 0 5px var(--glow-green);
+}
+
+/* Sidebar */
+#typora-sidebar {
+    background: var(--cyber-darker);
+    border-right: 2px solid var(--neon-cyan);
+    box-shadow: 2px 0 10px var(--glow-cyan);
+}
+
+.file-list-item {
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--cyber-grid);
+    transition: all 0.2s;
+}
+
+.file-list-item.active,
+.file-list-item:hover {
+    background: var(--cyber-grid);
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--glow-cyan);
+    border-left: 3px solid var(--neon-cyan);
+}
+
+.file-node-content {
+    color: var(--text-secondary);
+}
+
+.file-library-node.active > .file-node-content,
+.file-list-item.active {
+    color: var(--neon-cyan);
+}
+
+.file-library-node.active > .file-node-background {
+    background: var(--cyber-grid);
+}
+
+/* Sidebar tabs */
+.sidebar-tabs {
+    background: var(--cyber-darker);
+    border-bottom: 2px solid var(--neon-purple);
+}
+
+.ty-side-sort-btn.active,
+.ty-side-sort-btn:hover {
+    color: var(--neon-cyan);
+}
+
+/* Footer */
+footer {
+    color: var(--text-muted);
+    border-top: 1px solid var(--neon-cyan);
+    box-shadow: 0 -2px 10px var(--glow-cyan);
+}
+
+#footer-word-count {
+    color: var(--text-muted);
+}
+
+/* Tooltips */
+#ty-tooltip {
+    background: var(--cyber-grid);
+    border: 1px solid var(--neon-cyan);
+    color: var(--text-primary);
+    box-shadow: 0 0 10px var(--glow-cyan);
+}
+
+/* Modal dialogues */
+.modal-content {
+    background: var(--cyber-dark);
+    border: 2px solid var(--neon-cyan);
+    color: var(--text-primary);
+    box-shadow: 0 0 30px var(--glow-cyan);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--neon-cyan);
+    background: var(--cyber-grid);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--neon-cyan);
+    background: var(--cyber-grid);
+}
+
+.modal-content input {
+    background: var(--cyber-darker);
+    border: 1px solid var(--neon-purple);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+}
+
+.modal-content input:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--glow-cyan);
+}
+
+/* Buttons */
+.btn,
+.btn-default {
+    background: transparent;
+    color: var(--neon-cyan);
+    border: 2px solid var(--neon-cyan);
+    padding: 0.5rem 1.5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+    box-shadow: 0 0 5px var(--glow-cyan);
+}
+
+.btn:hover,
+.btn-default:hover {
+    background: var(--neon-cyan);
+    color: var(--cyber-black);
+    box-shadow: 0 0 20px var(--glow-cyan);
+}
+
+.btn-primary {
+    background: var(--neon-pink);
+    color: var(--cyber-black);
+    border: 2px solid var(--neon-pink);
+    box-shadow: 0 0 10px var(--glow-pink);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 20px var(--glow-pink);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--cyber-darker);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon-cyan);
+    box-shadow: 0 0 5px var(--glow-cyan);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-pink);
+    box-shadow: 0 0 10px var(--glow-pink);
+}
+
+/* Search */
+.md-search-hit {
+    background: var(--glow-pink);
+    color: var(--text-primary);
+    box-shadow: 0 0 5px var(--glow-pink);
+}
+
+#md-searchpanel {
+    background: var(--cyber-darker);
+    border-bottom: 2px solid var(--neon-cyan);
+}
+
+#md-searchpanel input {
+    background: var(--cyber-grid);
+    border: 1px solid var(--neon-purple);
+    color: var(--text-primary);
+}
+
+#md-searchpanel input:focus {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px var(--glow-cyan);
+}
+
+/* Cursor */
+.CodeMirror-cursor {
+    border-left: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 5px var(--glow-cyan);
+}
+
+/* Focus mode */
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+    color: var(--text-muted) !important;
+    opacity: 0.3;
+}
+
+.on-focus-mode .md-focus,
+.on-focus-mode .md-focus-container {
+    color: var(--text-primary);
+}
+
+/* Source mode */
+.cm-s-inner .cm-header,
+.cm-header {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--glow-cyan);
+}
+
+.cm-s-inner .cm-link,
+.cm-link {
+    color: var(--neon-purple);
+}
+
+.cm-s-inner .cm-string,
+.cm-string {
+    color: var(--neon-green);
+}
+
+.cm-s-inner .cm-comment,
+.cm-comment {
+    color: var(--text-secondary);
+}
+
+.cm-s-inner .cm-keyword,
+.cm-keyword {
+    color: var(--neon-pink);
+}
+
+.cm-s-inner .cm-variable,
+.cm-variable {
+    color: var(--neon-yellow);
+}
+
+.cm-s-inner .cm-tag,
+.cm-tag {
+    color: var(--neon-green);
+}
+
+.cm-s-inner .cm-attribute,
+.cm-attribute {
+    color: var(--neon-cyan);
+}
+
+.cm-s-inner .cm-number,
+.cm-number {
+    color: var(--neon-purple);
+}
+
+.cm-s-inner .cm-operator,
+.cm-operator {
+    color: var(--neon-pink);
+}
+
+.cm-s-inner .cm-def,
+.cm-def {
+    color: var(--neon-yellow);
+}
+
+.cm-s-inner .cm-property,
+.cm-property {
+    color: var(--neon-cyan);
+}
+
+.cm-s-inner .cm-builtin,
+.cm-builtin {
+    color: var(--neon-purple);
+}
+
+.cm-s-inner .cm-meta,
+.cm-meta {
+    color: var(--text-secondary);
+}
+
+.cm-s-inner .cm-atom,
+.cm-atom {
+    color: var(--neon-purple);
+}
+
+.cm-s-inner .cm-punctuation,
+.CodeMirror .cm-punctuation {
+    color: var(--text-primary);
+}
+
+.cm-s-inner .cm-bracket,
+.CodeMirror .cm-bracket {
+    color: var(--neon-yellow);
+}
+
+.cm-s-inner .cm-qualifier,
+.CodeMirror .cm-qualifier {
+    color: var(--neon-cyan);
+}
+
+.cm-s-inner .cm-type,
+.CodeMirror .cm-type {
+    color: var(--neon-cyan);
+}
+
+/* Ensure default/unstyled text in code blocks has a visible colour */
+.CodeMirror-line {
+    color: var(--text-primary);
+}
+
+/* Additional code block selectors to ensure dark background */
+pre.md-fences,
+pre.md-meta-block,
+.md-fences,
+.CodeMirror-code,
+.CodeMirror-scroll {
+    background: oklch(0.15 0 0) !important;
+}
+
+/* Ensure all code block wrappers have dark background */
+.md-fences-adv-panel {
+    background: oklch(0.15 0 0) !important;
+}
+
+/* Mermaid diagrams */
+.md-diagram-panel {
+    border: 2px solid var(--neon-purple);
+    background: var(--cyber-grid);
+    box-shadow: 0 0 10px var(--glow-purple);
+}
+
+/* Meta info */
+.md-image > .md-meta {
+    background: var(--cyber-grid);
+    color: var(--neon-purple);
+    border: 1px solid var(--neon-purple);
+}
+
+/* Mark/highlight */
+mark {
+    background: var(--neon-yellow);
+    color: var(--cyber-black);
+    padding: 0.1rem 0.3rem;
+    box-shadow: 0 0 10px rgba(255, 237, 0, 0.5);
+}
+
+/* Window controls */
+.typora-node {
+    background: var(--cyber-black);
+}
+
+/* Preferences */
+.ty-preferences {
+    background: var(--cyber-dark);
+    color: var(--text-primary);
+}
+
+.ty-preferences .window-header {
+    background: var(--cyber-grid);
+    border-bottom: 2px solid var(--neon-cyan);
+}
+
+.ty-preferences select {
+    background: var(--cyber-darker);
+    border: 1px solid var(--neon-purple);
+    color: var(--text-primary);
+}
+
+/* Context menu */
+.context-menu,
+.dropdown-menu {
+    background: var(--cyber-grid);
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 20px var(--glow-cyan);
+}
+
+.context-menu .menu-item,
+.dropdown-menu > li > a {
+    color: var(--text-primary);
+}
+
+.context-menu .menu-item:hover,
+.dropdown-menu > li > a:hover {
+    background: var(--cyber-darker);
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--glow-cyan);
+}
+
+/* Megamenu */
+.megamenu-content {
+    background: var(--cyber-dark);
+}
+
+.megamenu-menu-panel {
+    background: var(--cyber-dark);
+    color: var(--text-primary);
+}
+
+/* Cyber watermark */
+#write::after {
+    content: '[ CYBERPUNK MODE ACTIVE ]';
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: var(--neon-cyan);
+    font-size: 0.65rem;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    opacity: 0.3;
+    text-shadow: 0 0 5px var(--glow-cyan);
+    z-index: -1;
+}
+
+/* Print styles */
+@media print {
+    #write {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    #write::before,
+    #write::after,
+    body::before {
+        display: none;
+    }
+
+    #write h1,
+    #write h2,
+    #write h3,
+    #write h4,
+    #write h5,
+    #write h6 {
+        text-shadow: none;
+        animation: none;
+        page-break-after: avoid;
+    }
+
+    #write h1 {
+        color: black;
+        border-bottom: 2px solid black;
+    }
+
+    #write h2,
+    #write h3,
+    #write h4,
+    #write h5,
+    #write h6 {
+        color: #333;
+    }
+
+    #write a {
+        color: black;
+        text-decoration: underline;
+        text-shadow: none;
+    }
+
+    #write pre.md-fences,
+    #write code {
+        background: #f5f5f5 !important;
+        color: black;
+        border: 1px solid #ccc;
+        box-shadow: none;
+    }
+
+    #write blockquote {
+        background: transparent;
+        box-shadow: none;
+    }
+
+    #write table {
+        border: 1px solid black;
+    }
+
+    #write th,
+    #write td {
+        border: 1px solid black;
+    }
+}
