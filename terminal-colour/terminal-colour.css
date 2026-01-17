@@ -59,8 +59,9 @@ body {
 }
 
 #write {
-    max-width: 100ch;
+    max-width: 92%;
     padding: 2rem;
+    margin: 0 auto;
 }
 
 /* Headings with ANSI colours */

@@ -72,9 +72,10 @@ body {
 }
 
 #write {
-    max-width: 90ch;
+    max-width: 92%;
     padding: 2rem;
     padding-left: 3rem;
+    margin: 0 auto;
 }
 
 /* LCARS-style decorative frame */

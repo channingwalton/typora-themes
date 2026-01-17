@@ -67,21 +67,9 @@ body {
 }
 
 #write {
-    max-width: 960px;
+    max-width: 92%;
     padding: 3rem 2rem;
     margin: 0 auto;
-}
-
-@media only screen and (min-width: 1400px) {
-    #write {
-        max-width: 1100px;
-    }
-}
-
-@media only screen and (min-width: 1800px) {
-    #write {
-        max-width: 1200px;
-    }
 }
 
 /* Headings - clean hierarchy */
