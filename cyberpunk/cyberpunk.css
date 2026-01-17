@@ -78,8 +78,9 @@ body::before {
 }
 
 #write {
-    max-width: 90ch;
+    max-width: 92%;
     padding: 3rem;
+    margin: 0 auto;
     position: relative;
 }
 
