@@ -87,11 +87,11 @@ body::before {
 /* Glitch effect border */
 #write::before {
     content: '';
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     width: 3px;
-    height: 100vh;
+    height: 100%;
     background: linear-gradient(
         to bottom,
         var(--neon-pink) 0%,
@@ -100,12 +100,12 @@ body::before {
         var(--neon-green) 75%,
         var(--neon-pink) 100%
     );
-    box-shadow: 0 0 10px var(--glow-cyan);
-    animation: pulse 3s ease-in-out infinite;
-    z-index: -1;
+    pointer-events: none;
+    z-index: 0;
+    animation: cyber-line-quantized-pulse 3s steps(6, end) infinite;
 }
 
-@keyframes pulse {
+@keyframes cyber-line-quantized-pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.6; }
 }
